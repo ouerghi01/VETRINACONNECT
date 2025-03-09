@@ -23,7 +23,7 @@ export default function ProductsOverview({ allproducts, user }: Props) {
       ? allproducts.find(categoryGroup => categoryGroup.category === selectedCategory)?.products ?? []
       : allproducts.flatMap(categoryGroup => categoryGroup.products);
     setProducts(filteredProducts);
-  }, [selectedCategory]);
+  }, [selectedCategory,allproducts]);
 
   return (
     <div className="col-span-2 w-full px-6 py-8 bg-white shadow-md rounded-lg h-fit">  

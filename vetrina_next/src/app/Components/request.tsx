@@ -28,7 +28,7 @@ export default function RequestProduct({ userId, productId, setShowreq }: Reques
         });
         
        
-    },[])
+    },[setShowreq])
 
     return (
         <section id="card_request" className="fixed inset-0 flex items-center justify-center opacity-95 z-50 bg-black bg-opacity-50">

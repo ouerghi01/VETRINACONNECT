@@ -1,5 +1,5 @@
 "use client"; // Add this at the top to make it a Client Component
-import { FormEvent, useActionState } from 'react'
+import {  useActionState } from 'react'
 import { useSearchParams } from 'next/navigation';
 import { authenticate } from '../actions/auth';
  

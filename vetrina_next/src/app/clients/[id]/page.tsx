@@ -1,4 +1,3 @@
-import View_Product from "@/app/Components/view_product";
 import {  getProducts_By_Category } from "@/app/services/product";
 import { prisma } from "../../../../prisma_client";
 import ProductsOverview from "@/app/Components/products";
