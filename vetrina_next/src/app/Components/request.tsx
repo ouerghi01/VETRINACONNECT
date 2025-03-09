@@ -1,3 +1,4 @@
+'use client'
 import { useActionState, useEffect, useState } from "react";
 import { createRequestAction } from "../actions/request";
 import { X, Loader2, MapPin } from "lucide-react";
