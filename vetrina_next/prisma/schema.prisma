@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      Role     @relation(fields: [roleId], references: [id])
+  roleId    String   @default("USER")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  products  Product[]
+  requests  Request[]
+  
+}
+model VerificationToken {
+  id         String    @id @default(cuid())
+  identifier String
+  token      String    @unique
+  expires    DateTime
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime? @updatedAt @map("updated_at")
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+model Role {
+  id    String  @id @default(cuid())
+  name  String  @unique
+  users User[]
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  category    String
+  price       Float
+  image       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  requests    Request[]
+}
+model Request {
+  id           String        @id @default(cuid())
+  
+  numberClient String
+  
+  location     String        // Full address (optional)
+  latitude     Float         // Latitude for precise location
+  longitude    Float         // Longitude for precise location
+  message      String?
+  
+  quantity     Int           @default(1)
+  status       RequestStatus @default(PENDING)
+  
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  userId       String?
+  user         User?         @relation(fields: [userId], references: [id])
+
+  productId    String
+  product      Product       @relation(fields: [productId], references: [id])
+}
+
+enum RequestStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
