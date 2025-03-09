@@ -20,8 +20,8 @@ export default function RequestProduct({ userId, productId, setShowreq }: Reques
         undefined
     );
     useEffect(() => {
-        const card_request= document.getElementById('card_request');
-        card_request?.addEventListener('mouseleave', (e) => {
+        const card_request = document.getElementById('card_request');
+        card_request?.addEventListener('mouseleave', (e: MouseEvent) => {
             if (e.target === card_request) {
             setShowreq(false);
             }

@@ -74,7 +74,7 @@ export const getProducts_By_Category = async (): Promise<Product_Category_dto[]>
         return []
     }
     
-    let oo:Product_Category_dto[]=[]
+    const  oo:Product_Category_dto[]=[]
     for (let index = 0; index < categories.length; index++) {
         const element = categories[index];
         const xx=product_by_category.filter(v => v.category==element).map(prd => {

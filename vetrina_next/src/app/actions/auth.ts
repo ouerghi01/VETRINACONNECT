@@ -59,7 +59,7 @@ export async function signup(state: FormState, formData: FormData) {
     } 
     catch (error) {
         return {
-            error: 'Failed to create user'
+            error: 'Failed to create user '+error
         }
     }
     
@@ -73,9 +73,8 @@ export async function authenticate(
   formData: FormData,
 ) {
   try {
-    const ee=await signIn('credentials', formData);
+    await signIn('credentials', formData);
     
-    console.log(ee);
     
     
   } catch (error) {

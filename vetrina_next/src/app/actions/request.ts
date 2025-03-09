@@ -26,7 +26,7 @@ export async function createRequestAction(
     const request_product = validatedFields.data;
     try {
         console.log(request_product)
-        const req=await sendRequest(request_product);
+        await sendRequest(request_product);
         return {
             message: 'Request sent successfully, we will contact you soon.',
         }

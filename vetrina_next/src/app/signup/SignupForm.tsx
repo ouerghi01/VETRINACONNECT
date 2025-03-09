@@ -3,7 +3,7 @@ import React, { useActionState } from "react";
 import { signup } from "../actions/auth";
 
 function SignupForm() {
-    const [_, formAction, isPending] = useActionState(
+    const [errors, formAction, isPending] = useActionState(
         signup,
         undefined,
       );
@@ -67,6 +67,19 @@ function SignupForm() {
           'Create Account'
         )}
       </button>
+      {
+        errors && (
+          <p className="text-sm text-red-500 text-center">
+            {typeof errors === 'string' 
+              ? errors 
+              : errors.error 
+                ? errors.error 
+                : errors.errors 
+                  ? Object.values(errors.errors).flat().join(', ')
+                  : 'An error occurred'}
+          </p>
+        )
+      }
       <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                       Already have an account? <a href="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
        </p>
