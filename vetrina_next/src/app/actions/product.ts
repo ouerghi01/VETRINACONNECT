@@ -30,7 +30,7 @@ export async function createProductAction(
         }
     } catch (error) {
         return {
-            message: 'Failed to create product'
+            message: 'Failed to create product ' + error
         }
     }
 
