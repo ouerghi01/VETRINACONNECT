@@ -51,7 +51,7 @@ export default async function Page({
 }
 
 
-export  async function RenderRequests(requests: {
+async function RenderRequests(requests: {
   id: string;
   user: { email: string } | null;
   product: { name: string } | null;
