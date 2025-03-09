@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react";
 import { Product_Category_dto, Product_dto } from "../services/product";
 import { User } from "../lib/definitions.";
