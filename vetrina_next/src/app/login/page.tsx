@@ -1,9 +1,13 @@
+import { Suspense } from "react";
 import LoginPage from "./LoginForm";
 
 export  default async  function Page() {
     return (
         <>
-            <LoginPage />
+        <Suspense>
+        <LoginPage />
+        </Suspense>
+           
         </>
     )
 
