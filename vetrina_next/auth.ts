@@ -5,7 +5,7 @@ import { z } from 'zod';
 import bcrypt from 'bcrypt';
 import { prisma } from './prisma_client';
 import { User } from '@/app/lib/definitions.';
-import { setSession } from '@/app/lib/sessions';
+import { createSession, setSession } from '@/app/lib/sessions';
 import { redirect } from 'next/dist/server/api-utils';
 
 
@@ -61,7 +61,7 @@ export const { handlers, signIn, signOut, auth }= NextAuth({
           if (!user) return null;
           const isValid = await bcrypt.compare(password, user.password);
           if (isValid) {
-            await setSession(user);
+            await createSession(user);
             
             return user;
           }

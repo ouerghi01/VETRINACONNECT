@@ -81,7 +81,7 @@ export type User  = {
   email: string
   password: string
   role: string
-}
+} | null
 export async function findUser(id:string) {
   return await prisma.user.findFirst({
     where:{

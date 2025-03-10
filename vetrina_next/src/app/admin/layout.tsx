@@ -6,10 +6,9 @@ export default function RootLayout({
     children: React.ReactNode;
   }>) {
     return (
-        <body
-        >
+        <div className="admin-layout">
           {children}
-        </body>
+        </div>
     );
   }
   

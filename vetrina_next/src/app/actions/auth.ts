@@ -3,7 +3,6 @@
 import { prisma } from "../../../prisma_client"
 import { FormState, SignupFormSchema } from "../lib/definitions."
 import bcrypt from 'bcrypt'
-import { redirect } from "next/navigation"
 import { AuthError } from 'next-auth';
 import { signIn } from "../../../auth"
 
@@ -54,7 +53,6 @@ export async function signup(state: FormState, formData: FormData) {
                 roleId: userRole.id
             }
         })
-        redirect('/login')
 
     } 
     catch (error) {

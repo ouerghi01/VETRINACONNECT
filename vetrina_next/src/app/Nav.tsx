@@ -2,9 +2,10 @@
 import Link from "next/link";
 import { verifySession } from "./lib/dal";
 import { LogIn, UserPlus, LogOut, User, Home } from "lucide-react"; // Import icons
+import { getSession } from "./lib/sessions";
 
 export default async function Nav() {
-  const session = await verifySession();
+  const session = await getSession() || null;
 
   return (
     <nav className="flex justify-between items-center p-4 w-full bg-gray-900 shadow-md rounded-b-md">

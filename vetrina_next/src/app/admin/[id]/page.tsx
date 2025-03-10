@@ -16,6 +16,7 @@ export default async function Page({
   }) {
     const {id} = await params;
     const user= await getSession();
+    console.log(user);
     const allproducts:Product_Category_dto[]= await getProducts_By_Category();
     await prisma.$disconnect();
     const requests = await getRequests();
