@@ -20,16 +20,7 @@ export default function RequestProduct({ userId, productId, setShowreq }: Reques
         createRequestAction,
         undefined
     );
-    useEffect(() => {
-        const card_request = document.getElementById('card_request');
-        card_request?.addEventListener('mouseleave', (e: MouseEvent) => {
-            if (e.target === card_request) {
-            setShowreq(false);
-            }
-        });
-        
-       
-    },[setShowreq])
+
 
     return (
         <section id="card_request" className="fixed inset-0 flex items-center justify-center opacity-95 z-50 bg-black bg-opacity-50">
